@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lambdaapp.iml" filepath="$PROJECT_DIR$/.idea/modules/lambdaapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lambdaapp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lambdaapp_main.iml" group="lambdaapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lambdaapp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lambdaapp_test.iml" group="lambdaapp" />
+    </modules>
+  </component>
+</project>

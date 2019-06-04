@@ -1,0 +1,52 @@
+language: java
+jdk:
+ - oraclejdk8
+
+sudo: false
+
+install: true
+
+script:
+ - sudo pip install awscli
+ - pwd
+ - chmod +x afterInstall.sh
+ - cd webapp/lambdaapp
+ - pwd
+ - ls -al
+ - gradle buildZip
+ - cd build/distributions
+ - ls -al
+ - cd ../../..
+ - pwd
+ - ls -al
+
+after_success:
+ - pwd
+ - ls -al
+ - cd ..
+ - ls -al
+ - mkdir codedeploy_artifact
+ - pwd
+ - cd webapp/lambdaapp/build/distributions
+ - ls -al
+ - cd ../../../..
+ - mv webapp/lambdaapp/build/distributions/lambdaapp.zip codedeploy_artifact/
+ - cd codedeploy_artifact
+ - ls -al
+ - pwd
+ - ls -al
+ - pwd
+ - cd ..
+ - pwd
+ - ls -al
+
+deploy:
+ - provider: s3
+   local_dir: codedeploy_artifact
+   bucket: $s3_bucket
+   region: us-east-1
+   skip_cleanup: true
+   on:
+     all_branches: true
+after_deploy: ./afterInstall.sh $s3_bucket
+

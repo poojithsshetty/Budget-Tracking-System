@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+}
+
+group 'neu.coe'
+//version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+            compile "com.amazonaws:aws-java-sdk-s3:1.11.422"
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb
+   // compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.9.0'
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-core
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
+// https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-events
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '1.0.0'
+// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.11.442'
+    //compile group: 'com.amazonaws:aws-java-sdk-dynamodb:+'
+// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-ses
+ //   compile group: 'com.amazonaws', name: 'aws-java-sdk-ses', version: '1.9.16'
+// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
+    compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.10.11'
+// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.119'
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-ses
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-ses', version: '1.11.442'
+
+
+
+}
+
+task buildZip(type: Zip){
+    from compileJava
+    from processResources
+    into ('lib'){
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip
